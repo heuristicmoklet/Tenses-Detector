@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-package com.javapapers.android.csvfileread.app;
+
 
 public class CSVFile {
     InputStream inputStream;
@@ -20,14 +20,14 @@ public class CSVFile {
         this.inputStream = inputStream;
     }
 
-    public List read(){
-        List resultList = new ArrayList();
+    public List<String[]> read(){
+        List<String[]> resultList = new ArrayList();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
-            String csvLine;
+            String csvLine;//transaction
             while ((csvLine = reader.readLine()) != null) {
                 String[] row = csvLine.split(",");
-                resultList.add(row);
+                resultList.add(row);//transaction save data
             }
         }
         catch (IOException ex) {
