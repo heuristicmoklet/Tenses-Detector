@@ -29,18 +29,20 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonOK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doProses(Input);
+                doProses();
             }
         });
     }
 
-    private void doProses(View input) {
+    private void doProses() {
+        String input = Input.getText().toString().isEmpty() ? "" : Input.getText().toString();
         String[] separated = input.split(" ");
         String hasil = "";
         int i;
-        for (i = 0; i < Input.length(); i++) {
-            Hasil.setText(separated[i]);
+        for (i = 0; i < separated.length; i++) {
+            hasil += separated[i].toString() + "\n";
         }
+        Hasil.setText(hasil);
     }
 }
 /*for (int i = 0; i < scoreList.size(); i++) {
