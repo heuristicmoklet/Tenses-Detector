@@ -53,9 +53,14 @@ public class MainActivity extends AppCompatActivity {
                 Hasil.setText("Future Continuous Tense");
             }
 
+            //use verb 2
             for (j = 0; j < scoreList.size(); j++) {
                 if (separated[i].equals(scoreList.get(j)[1])) {
                     Hasil.setText("Simple Past Tense");
+                } else if (separated[i].equals(tobe1[2][2]) && separated[i+1].equals(scoreList.get(j)[2])){
+                    Hasil.setText("Past Perfect Tense");
+              } else if(separated[i].equals(tobe1[0][2]) || separated[i].equals(tobe1[1][2]) && separated[i+1].equals(scoreList.get(j)[2])){ //+sakjane v3
+                    Hasil.setText("Present Perfect Tense");
                 }
             }
 
@@ -66,8 +71,15 @@ public class MainActivity extends AppCompatActivity {
                     Hasil.setText("Past Continuous Tense");
                 }  else if(separated[i].equals("will") && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
                     Hasil.setText("Future Continuous Tense");
-                } else if(separated[i].equals(tobe1[k][2])){ //+sakjane v3
-                    Hasil.setText("Present Perfect Tense");
+                }  else if (separated[i].equals(tobe1[0][2])  && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing") ||
+                        separated[i].equals(tobe1[1][2]) && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Present Perfect Continuous Tense");
+                }  else if (separated[i].equals(tobe1[2][2]) && separated[i+1].endsWith("ed")){
+                    Hasil.setText("Past Perfect Tense");
+                }  else if (separated[i].equals(tobe1[2][2]) && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Past Perfect Continuous Tense");
+                } else if (separated[i].equals("will") && separated[i+1].equals(tobe1[0][3]) && separated[i+2].equals(tobe1[1][3]) && separated[i+3].endsWith("ing")){
+                    Hasil.setText("Future Perfect Continuous Tense");
                 }
             }
 
