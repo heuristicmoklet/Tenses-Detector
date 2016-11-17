@@ -41,8 +41,11 @@ public class MainActivity extends AppCompatActivity {
         int i;
         for (i = 0; i < separated.length; i++) {
             hasil += separated[i].toString() + "\n";
+            if (separated[i].endsWith("ed")) {
+                Hasil.setText("Simple Past");
+            }
         }
-        Hasil.setText(hasil);
+
     }
 }
 /*for (int i = 0; i < scoreList.size(); i++) {
