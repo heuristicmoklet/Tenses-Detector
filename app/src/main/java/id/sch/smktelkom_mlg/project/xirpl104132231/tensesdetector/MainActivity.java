@@ -49,10 +49,25 @@ public class MainActivity extends AppCompatActivity {
                 Hasil.setText("Simple Past Tense");
             } else if (separated[i].equals("will")) {
                 Hasil.setText("Simple Future Tense");
+            }  else if(separated[i].equals("will") && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
+                Hasil.setText("Future Continuous Tense");
             }
+
             for (j = 0; j < scoreList.size(); j++) {
                 if (separated[i].equals(scoreList.get(j)[1])) {
                     Hasil.setText("Simple Past Tense");
+                }
+            }
+
+            for (k = 0; k<tobe1.length;k++){
+                if (separated[i].equals(tobe1[k][0]) && separated[i+1].endsWith("ing")){
+                    Hasil.setText("Present Continuous Tense");
+                } else if (separated[i].equals(tobe1[k][1]) && separated[i+1].endsWith("ing")){
+                    Hasil.setText("Past Continuous Tense");
+                }  else if(separated[i].equals("will") && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Future Continuous Tense");
+                } else if(separated[i].equals(tobe1[k][2])){ //+sakjane v3
+                    Hasil.setText("Present Perfect Tense");
                 }
             }
 
