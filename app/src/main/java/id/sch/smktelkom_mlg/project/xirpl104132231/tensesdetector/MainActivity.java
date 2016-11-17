@@ -22,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Input = (EditText) findViewById(R.id.editTextTenses);
         Hasil = (TextView) findViewById(R.id.textViewHasil);
 
-        InputStream inputStream = getResources().openRawResource(R.raw.verb0);
-        CSVFile csvFile = new CSVFile(inputStream);
-        List<String[]> scoreList = csvFile.read();
+
 
         findViewById(R.id.buttonOK).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,24 +33,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doProses() {
+        InputStream inputStream = getResources().openRawResource(R.raw.verb0);
+        CSVFile csvFile = new CSVFile(inputStream);
+        List<String[]> scoreList = csvFile.read();
         String input = Input.getText().toString().isEmpty() ? "" : Input.getText().toString();
         String[] separated = input.split(" ");
-        String hasil = "";
-        int i;
-        for (i = 0; i < separated.length; i++) {
-            hasil += separated[i].toString() + "\n";
-            if (separated[i].endsWith("ed")) {
-                Hasil.setText("Simple Past");
-            }
-        }
 
+        String tobe1[][] = {{"is", "was", "have", "be"}, {"am", "were", "has", "been"}, {"are", "were", "had"}};
+        String s[] = {"i", "you", "they", "we", "he", "she"};
+//        String hasil = "";
+        int i, j, k;
+        for (i = 0; i < separated.length; i++) {
+//            hasil += separated[i].toString() + "\n";
+            if (separated[i].endsWith("ed")) {
+                Hasil.setText("Simple Past Tense");
+            } else if (separated[i].equals("will")) {
+                Hasil.setText("Simple Future Tense");
+            }
+            for (j = 0; j < scoreList.size(); j++) {
+                if (separated[i].equals(scoreList.get(j)[1])) {
+                    Hasil.setText("Simple Past Tense");
+                }
+            }
+
+        }
     }
 }
 /*for (int i = 0; i < scoreList.size(); i++) {
 
+
+                else if(separated[i].equals("will") && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
+                Hasil.setText("Future Continuous Tense");
+            }
             for (int j = 0; j < 3; j++) {
                 Log.d("VERB", "onCreate: "+i+"|"+j+":"+scoreList.get(i)[j]); //split
             }
 
 
-        }*/
+        }
+
+
+
+
+        */
