@@ -41,45 +41,16 @@ public class MainActivity extends AppCompatActivity {
         String[] separated = input.split(" ");
 
         String tobe1[][] = {{"is", "was", "have", "be","will"}, {"am", "were", "has", "been"}, {"are", "were", "had"}};
-        String s[] = {"i", "you", "they", "we", "he", "she"};
+        String modal1[] = {"will", "shall", "must", "can", "must"};
+        String modal2[] = {"would", "should", "might", "could", "must"};
 //        String hasil = "";
         int i, j, k;
         for (i = 0; i < separated.length; i++) {
 //            hasil += separated[i].toString() + "\n";
-            if (separated[i].equals("will") && separated[i+1].equals("not")) {
-                Hasil.setText("Simple Future Tense Negative");
-            }  else if(separated[i].equals(tobe1[0][4]) && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
-                Hasil.setText("Future Continuous Tense");
-            } else if (separated[i].equals(tobe1[0][4]) && separated[i+1].equals(tobe1[0][2]) && separated[i+2].equals(tobe1[1][3]) && separated[i+3].endsWith("ing")){
-                Hasil.setText("Future Perfect Continuous Tense");
-            } else if ((separated[i].equals(tobe1[0][2])  && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing")) ||
-                    (separated[i].equals(tobe1[1][2]) && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing"))){
-                Hasil.setText("Present Perfect Continuous Tense");
-            } else if ((separated[i].equals("do") && separated[i+1].equals("not"))  || (separated[i].equals("does") && separated[i+1].equals("not"))){
+            if ((separated[i].equals("do") && separated[i+1].equals("not"))  || (separated[i].equals("does") && separated[i+1].equals("not"))){
                 Hasil.setText("Simple Present Tense Negative");
             } else if (separated[i].equals("did") && separated[i+1].equals("not")){
                 Hasil.setText("Simple Past Tense Negative");
-            } else if (separated[i].equals("will")){
-                Hasil.setText("Simple Future Tense");
-            }
-
-            //use verb 2
-            for (j = 0; j < scoreList.size(); j++) {
-                if (separated[i].equals(tobe1[0][4]) && separated[i+1].equals(tobe1[0][2]) && separated[i+1].equals(scoreList.get(j)[2])){
-                    Hasil.setText("Future Perfect Tense");
-                } else if (separated[i].equals(tobe1[0][4]) && separated[i+1].equals(tobe1[0][2]) && separated[i+2].endsWith("ed")) {
-                    Hasil.setText("Future Perfect Tense");
-                }else if((separated[i].equals(tobe1[0][2]) && separated[i+1].endsWith("ed")) || (separated[i].equals(tobe1[1][2]) && separated[i+1].endsWith("ed"))) {
-                    Hasil.setText("Present Perfect Tense");
-                } else if((separated[i].equals(tobe1[0][2]) && separated[i+1].equals(scoreList.get(j)[2])) || (separated[i].equals(tobe1[1][2]) && separated[i+1].equals(scoreList.get(j)[2]))){
-                    Hasil.setText("Present Perfect Tense");
-                }else if (separated[i].equals(tobe1[2][2]) && separated[i+1].equals(scoreList.get(j)[2])){
-                    Hasil.setText("Past Perfect Tense");
-                } else if (separated[i].equals(scoreList.get(j)[1])){
-                    Hasil.setText("Simple Past Tense");
-                } else if (separated[i].endsWith("ed")){
-                    Hasil.setText("Simple Past Tense");
-                }
             }
 
             for (k = 0; k<tobe1.length;k++){
@@ -87,10 +58,55 @@ public class MainActivity extends AppCompatActivity {
                     Hasil.setText("Present Continuous Tense");
                 } else if (separated[i].equals(tobe1[k][1]) && separated[i+1].endsWith("ing")){
                     Hasil.setText("Past Continuous Tense");
-                }  else if(separated[i].equals(tobe1[0][4]) && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
-                    Hasil.setText("Future Continuous Tense");
-                }     else if (separated[i].equals(tobe1[2][2]) && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing")){
+                } else if (separated[i].equals(tobe1[2][2]) && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing")){
                     Hasil.setText("Past Perfect Continuous Tense");
+                } else if (separated[i].equals(tobe1[k][0]) && separated[i+1].equals("not") && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Present Continuous Tense Negative");
+                } else if (separated[i].equals(tobe1[k][1]) && separated[i+1].equals("not") && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Past Continuous Tense Negative");
+                }
+            }
+            for (int l = 0; l<modal1.length;l++){
+                if (separated[i].equals(modal1[l]) && separated[i+1].equals("not") && separated[i+2].equals("be") && separated[i+3].endsWith("ing")){
+                    Hasil.setText("Future Continuous Tense Negative");
+                } else if(separated[i].equals(modal1[l]) && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Future Continuous Tense");
+                } else if (separated[i].equals(modal1[l]) && separated[i+1].equals(tobe1[0][2]) && separated[i+2].equals(tobe1[1][3]) && separated[i+3].endsWith("ing")){
+                    Hasil.setText("Future Perfect Continuous Tense");
+                } else if(separated[i].equals(modal1[l]) && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Future Continuous Tense");
+                } else if (separated[i].equals(modal1[l]) && separated[i+1].equals("not")) {
+                    Hasil.setText("Simple Future Tense Negative");
+                } else if (separated[i].equals(modal1[l])){
+                    Hasil.setText("Simple Future Tense");
+                }
+
+
+                //use verb 2going
+                for (j = 0; j < scoreList.size(); j++) {
+                    if ((separated[i].equals(modal1[l]) && separated[i+1].equals(tobe1[0][2]) && separated[i+2].equals(scoreList.get(j)[2]))
+                            || (separated[i].equals(modal1[l]) && separated[i+1].equals(tobe1[0][2]) && separated[i+2].endsWith("ed"))){
+                        Hasil.setText("Future Perfect Tense");
+                    } else if((separated[i].equals(tobe1[0][2]) && separated[i+1].endsWith("ed")) || (separated[i].equals(tobe1[1][2]) && separated[i+1].endsWith("ed")) ||
+                            (separated[i].equals(tobe1[0][2]) && separated[i+1].equals(scoreList.get(j)[2])) || (separated[i].equals(tobe1[1][2]) && separated[i+1].equals(scoreList.get(j)[2]))){
+                        Hasil.setText("Present Perfect Tense");
+                    } else if (separated[i].equals(tobe1[2][2]) && separated[i+1].equals(scoreList.get(j)[2])||separated[i].equals(tobe1[2][2]) && separated[i+1].endsWith("ed")){
+                        Hasil.setText("Past Perfect Tense");
+                    } else if (separated[i].equals(scoreList.get(j)[1])||separated[i].endsWith("ed")){
+                        Hasil.setText("Simple Past Tense");
+                    }
+                }
+            }
+            for (int m=0; m<modal2.length;m++){
+                if (separated[i].equals(modal2[m]) && separated[i+1].equals("be") && separated[i+2].endsWith("ing")){
+                    Hasil.setText("Past Future Continuous Tense");
+                } else if (separated[i].equals(modal2[m]) && separated[i+1].equals("have") && separated[i+2].equals("been") && separated[i+3].endsWith("ing")){
+                    Hasil.setText("Past Future Perfect Tense");
+                } else if ((separated[i].equals(tobe1[0][2])  && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing")) ||
+                        (separated[i].equals(tobe1[1][2]) && separated[i+1].equals(tobe1[1][3]) && separated[i+2].endsWith("ing"))){
+                    Hasil.setText("Present Perfect Continuous Tense");
+                } else if (separated[i].equals(modal2[m])){
+                    Hasil.setText("Simple Past Future Tense");
                 }
             }
 
