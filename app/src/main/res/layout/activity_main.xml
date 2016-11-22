@@ -10,8 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="id.sch.smktelkom_mlg.project.xirpl104132231.tensesdetector.MainActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="id.sch.smktelkom_mlg.project.xirpl104132231.tensesdetector.MainActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -23,6 +23,12 @@
             android:layout_height="wrap_content"
             android:hint="Input Sentence Here" />
     </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageViewKamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_photo_camera_black_24dp" />
 
     <Button
         android:id="@+id/buttonOK"
@@ -41,11 +47,11 @@
         tools:text="Hasil" />
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="200dp"
         android:layout_height="67dp"
         android:layout_marginBottom="10px"
         android:layout_marginTop="300dp"
-        app:srcCompat="@drawable/corp_logo"
-        android:id="@+id/imageView2" />
+        app:srcCompat="@drawable/corp_logo" />
 
 </LinearLayout>
