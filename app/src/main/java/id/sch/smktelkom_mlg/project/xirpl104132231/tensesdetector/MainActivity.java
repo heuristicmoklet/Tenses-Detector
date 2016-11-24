@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         CSVFile csvFile = new CSVFile(inputStream);
         List<String[]> scoreList = csvFile.read();
         String input = Input.getText().toString().isEmpty() ? "" : Input.getText().toString();
-
+        String[] separated = input.split(" ");
 
 //        Pattern SimplePresent = Pattern.compile("(i|they|we|you) do");
 //        Pattern SimplePresent2 = Pattern.compile("(she|he|it) does");
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Pattern PresentPerfectC2 = Pattern.compile("(he|she|it) has been .+ing .+");
 
         //PAST TENSES
-        Pattern SimplePast = Pattern.compile("(i|you|they|we|he|she|it)  ");//verb2
+//        Pattern SimplePast = Pattern.compile("(i|you|they|we|he|she|it)  ");//verb2
         Pattern SimplePast2 = Pattern.compile("(i|you|they|we|he|she|it) .+ed .+");
         Pattern PastC = Pattern.compile("(i|he|she|it) was .+ing .+");
         Pattern PastC2 = Pattern.compile("(you|they|we) were .+ing .+");
@@ -116,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
             Hasil.setText("This is Present Perfect Continuous Tense");
         } else if (PresentPerfectC2.matcher(input).matches()){
             Hasil.setText("This is Present Perfect Continuous Tense");
+        } else if (SimplePast2.matcher(input).matches()){
+            Hasil.setText("This is Simple Past");
         } else if (PastC.matcher(input).matches()){
             Hasil.setText("This is Past Continuous Tense");
         } else  if (PastC2.matcher(input).matches()){
@@ -142,6 +144,13 @@ public class MainActivity extends AppCompatActivity {
             Hasil.setText("This is Simple Past Future Tense");
         } else {
             Hasil.setText("Incorrect Input");
+            for (int i = 0; i < separated.length; i++){
+                for (int j=0; j<scoreList.size(); j++){
+                    if (separated[i].equals(scoreList.get(j)[1])){
+                        Hasil.setText("This is Simple Past Tense");
+                    }
+                }
+            }
         }
     }
 }
