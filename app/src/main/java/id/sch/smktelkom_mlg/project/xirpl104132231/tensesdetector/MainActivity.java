@@ -1,10 +1,13 @@
 package id.sch.smktelkom_mlg.project.xirpl104132231.tensesdetector;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.io.InputStream;
 import java.util.List;
@@ -12,6 +15,7 @@ import java.util.regex.Pattern;
 
 
 public class MainActivity extends AppCompatActivity {
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     EditText Input;
     TextView Hasil;
 
@@ -23,14 +27,40 @@ public class MainActivity extends AppCompatActivity {
         Input = (EditText) findViewById(R.id.editTextTenses);
         Hasil = (TextView) findViewById(R.id.textViewHasil);
 
-
-
+        Intent intent = getIntent();
+        String scannedText = intent.getStringExtra("text");
+        if (scannedText != "") {
+            Input.setText(scannedText);
+        }
         findViewById(R.id.buttonOK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doProses();
             }
         });
+
+        findViewById(R.id.imageViewKamera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                capturetext();
+            }
+        });
+    }
+
+    private void capturetext() {
+        Intent i = new Intent(getApplicationContext(), OcrCaptureActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bitmap bitmap = data.getParcelableExtra("data");
+            ImageView iv = (ImageView) findViewById(R.id.imageViewKamera);
+            iv.setImageBitmap(bitmap);
+        }
     }
 
     private void doProses() {
