@@ -1,14 +1,16 @@
 package id.sch.smktelkom_mlg.project.xirpl104132231.tensesdetector;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.io.InputStream;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -35,7 +37,17 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonOK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doProses();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Tips to use~");
+                builder.setMessage("It is better if you use PRONOUNS rather than using names and objects");
+                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        doProses();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 
@@ -75,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
         Pattern PresentCont = Pattern.compile("i am .+ing .+");
         Pattern PresentCont2 = Pattern.compile("(you|they|we) are .+ing .+");
         Pattern PresentCont3 = Pattern.compile("(he|she|it) is .+ing .+");
-        Pattern PresentPerfect = Pattern.compile("(i|you|they|we) (have)"); //+verb3
-        Pattern PresentPerfect2 = Pattern.compile("(he|she|it) (has)"); //verb3
         Pattern PresentPerfectC = Pattern.compile("(i|you|they|we) have been .+ing .+ ");
         Pattern PresentPerfectC2 = Pattern.compile("(he|she|it) has been .+ing .+");
 
@@ -100,7 +110,10 @@ public class MainActivity extends AppCompatActivity {
         Pattern PastFuturePerfect = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) have been "); //+verb3
         Pattern PastFuturePerfectC = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) have been .+ing .+");
 
+        Pattern PresentPerfect = Pattern.compile("(i|you|they|we) (have)"); //+verb3
+        Pattern PresentPerfect2 = Pattern.compile("(he|she|it) (has)"); //verb3
 
+        String subjek1[] = {"i","you","they","we"};
 
         if (PresentCont.matcher(input).matches()){
             Hasil.setText("This is Present Continuous Tense");
@@ -108,10 +121,6 @@ public class MainActivity extends AppCompatActivity {
             Hasil.setText("This is Present Continuous Tense");
         } else if (PresentCont3.matcher(input).matches()){
             Hasil.setText("This is Present Continuous Tense");
-        } else if (PresentPerfect.matcher(input).matches()){
-            Hasil.setText("This is Present Perfect Tense");
-        } else if (PresentPerfect2.matcher(input).matches()){
-            Hasil.setText("This is Present Perfect Tense");
         } else if (PresentPerfectC.matcher(input).matches()){
             Hasil.setText("This is Present Perfect Continuous Tense");
         } else if (PresentPerfectC2.matcher(input).matches()){
