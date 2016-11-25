@@ -11,14 +11,21 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
+        multiDexEnabled true
+
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
+            shrinkResources true
         }
     }
 }
@@ -35,4 +42,5 @@ dependencies {
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     testCompile 'junit:junit:4.12'
     compile 'com.google.android.gms:play-services:9.8.0'
+    compile 'com.android.support:multidex:1.0.0'
 }
