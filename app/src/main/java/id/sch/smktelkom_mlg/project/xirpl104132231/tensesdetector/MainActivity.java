@@ -87,33 +87,36 @@ public class MainActivity extends AppCompatActivity {
         Pattern PresentCont = Pattern.compile("i am .+ing .+");
         Pattern PresentCont2 = Pattern.compile("(you|they|we) are .+ing .+");
         Pattern PresentCont3 = Pattern.compile("(he|she|it) is .+ing .+");
-        Pattern PresentPerfectC = Pattern.compile("(i|you|they|we) have been .+ing .+ ");
+        Pattern PresentPerfectC = Pattern.compile("(i|you|they|we) have been .+ing .+");
         Pattern PresentPerfectC2 = Pattern.compile("(he|she|it) has been .+ing .+");
 
         //PAST TENSES
-//        Pattern SimplePast = Pattern.compile("(i|you|they|we|he|she|it)  ");//verb2
         Pattern SimplePast2 = Pattern.compile("(i|you|they|we|he|she|it) .+ed .+");
         Pattern PastC = Pattern.compile("(i|he|she|it) was .+ing .+");
         Pattern PastC2 = Pattern.compile("(you|they|we) were .+ing .+");
-        Pattern PastPerfect = Pattern.compile("(i|you|they|we|he|she|it) had "); //+verb3
         Pattern PastPerfectC = Pattern.compile("(i|you|they|we|he|she|it) had been .+ing .+");
 
         //FUTURE TENSES
         Pattern SimpleFuture = Pattern.compile("(i|you|they|we|he|she|it) (will|shall|must|can|may) .+");
         Pattern FutureC = Pattern.compile("(i|you|they|we|he|she|it) (will|shall|must|can|may) be .+ing .+");
-        Pattern FuturePrefect = Pattern.compile("(i|you|they|we|he|she|it) (will|shall|must|can|may) have "); //verb3
         Pattern FuturePrefectC = Pattern.compile("(i|you|they|we|he|she|it) (will|shall|must|can|may) have been .+ing .+");
 
         //PAST FUTURE tenses
         Pattern PastFuture = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) .+");
         Pattern PastFutureC = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) be .+ing .+");
-        Pattern PastFuturePerfect = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) have been "); //+verb3
+        Pattern PastFuturePerfect = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) have been .+"); //+verb3
         Pattern PastFuturePerfectC = Pattern.compile("(i|you|they|we|he|she|it) (would|should|might|could|must) have been .+ing .+");
 
         Pattern PresentPerfect = Pattern.compile("(i|you|they|we) (have)"); //+verb3
         Pattern PresentPerfect2 = Pattern.compile("(he|she|it) (has)"); //verb3
 
-        String subjek1[] = {"i","you","they","we"};
+        Pattern p = Pattern.compile("(i|you|they|we|he|she|it)");
+
+        String subjek1[] = {"i", "you", "they", "we"};
+        String subjek2[] = {"he","she","it"};
+        String modal1[] = {"will","shall","must","can","may"};
+        String modal2[] = {"would","should","might","could","might"};
+
 
         if (PresentCont.matcher(input).matches()){
             Hasil.setText("This is Present Continuous Tense");
@@ -126,23 +129,17 @@ public class MainActivity extends AppCompatActivity {
         } else if (PresentPerfectC2.matcher(input).matches()){
             Hasil.setText("This is Present Perfect Continuous Tense");
         } else if (SimplePast2.matcher(input).matches()){
-            Hasil.setText("This is Simple Past");
+            Hasil.setText("This is Simple Past Tense");
         } else if (PastC.matcher(input).matches()){
             Hasil.setText("This is Past Continuous Tense");
         } else  if (PastC2.matcher(input).matches()){
             Hasil.setText("This is Past Continuous Tense");
         } else if (PastPerfectC.matcher(input).matches()){
             Hasil.setText("This is Past Perfect Continuous Tense");
-        } else if (PastPerfect.matcher(input).matches()){
-            Hasil.setText("Thi is Past Perfect Tense");
         } else if (FuturePrefectC.matcher(input).matches()){
             Hasil.setText("This is Future Perfect Continuous Tense");
         } else if (FutureC.matcher(input).matches()){
             Hasil.setText("This is Future Continuous Tense");
-        } else if (FuturePrefect.matcher(input).matches()){
-            Hasil.setText("This is Future Perfect Tense");
-        } else if (SimpleFuture.matcher(input).matches()){
-            Hasil.setText("This is Simple Future Tense");
         } else if (PastFuturePerfectC.matcher(input).matches()){
             Hasil.setText("This is Past Future Perfect Continuous Tense");
         } else if (PastFuturePerfect.matcher(input).matches()){
@@ -155,11 +152,47 @@ public class MainActivity extends AppCompatActivity {
             Hasil.setText("Incorrect Input");
             for (int i = 0; i < separated.length; i++){
                 for (int j=0; j<scoreList.size(); j++){
-                    if (separated[i].equals(scoreList.get(j)[1])){
-                        Hasil.setText("This is Simple Past Tense");
+
+                    for (int k=0; k<subjek1.length;k++){
+
+                        for (int mod1=0; mod1<modal1.length;mod1++){
+                            if (separated[i].equals(subjek1[k]) && separated[i+1].equals(modal1[mod1]) && separated[i+2].equals("have") && (separated[i+3].equals(scoreList.get(j)[2]) || (separated[i+3].endsWith("ed")))){
+                                Hasil.setText("This is Future Perfect Tense");
+                            } else if (separated[i].equals(subjek1[k]) && separated[i+1].equals(modal1[mod1])){
+                                Hasil.setText("This is Simple Future Tense");
+                            }
+                        }
+
+                        if (separated[i].equals(subjek1[k]) && separated[i+1].equals("have") && separated[i+2].equals(scoreList.get(j)[2])){
+                            Hasil.setText("This is Present Perfect Tense");
+                        } else if (separated[i].equals(subjek1[k]) && separated[i+1].equals("have") && separated[i+2].endsWith("ed")){
+                            Hasil.setText("This is Present Perfect Tense");
+                        } else if (separated[i].equals(subjek1[k]) && separated[i+1].equals("had") && (separated[i+2].equals(scoreList.get(j)[2]) || separated[i+2].endsWith("ed"))){
+                            Hasil.setText("This is Past Perfect Tense");
+                        } else if (separated[i].equals(subjek1[k]) && (separated[i+1].equals(scoreList.get(j)[1]) || separated[i+1].endsWith("ed"))){
+                            Hasil.setText("This is Simple Past Tense");
+                        }
+                    }
+                    for (int l=0; l<subjek2.length;l++){
+
+                        for (int mod1=0; mod1<modal1.length;mod1++){
+                            if (separated[i].equals(subjek2[l]) && separated[i+1].equals(modal1[mod1]) && separated[i+2].equals("have") && (separated[i+3].equals(scoreList.get(j)[2]) || (separated[i+3].endsWith("ed")))){
+                                Hasil.setText("This is Future Perfect Tense");
+                            } else if (separated[i].equals(subjek2[l]) && separated[i+1].equals(modal1[mod1])){
+                                Hasil.setText("This is Simple Future Tense");
+                            }
+                        }
+
+                        if (separated[i].equals(subjek2[l]) && separated[i+1].equals("has") && (separated[i+2].equals(scoreList.get(j)[2])  || separated[i+2].endsWith("ed"))){
+                            Hasil.setText("This is Present Perfect Tense");
+                        } else if (separated[i].equals(subjek2[l]) && separated[i+1].equals("had") && (separated[i+2].equals(scoreList.get(j)[2]) || separated[i+2].endsWith("ed"))){
+                            Hasil.setText("This is Past Perfect Tense");
+                        } else if ((separated[i].equals(subjek2[l]) && (separated[i+1].equals(scoreList.get(j)[1]) || separated[i+1].endsWith("ed")))){
+                            Hasil.setText("This is Simple Past Tense");
+                        }
                     }
                 }
             }
         }
+        }
     }
-}
