@@ -5,6 +5,9 @@ Dari sisi user, user menginputkan kalimat ke edit text yang telah disediakan. Ke
 
 Aplikasi ini dibuat menggunakan database ActiveAndroid, dimana database tersebut digunakan untuk menyimpan irreguler verb. Untuk mendeteksi tenses, programmer menggunakan pengondisian if/else.<br><br>
 
+#Link Apk
+<p> http://www.mediafire.com/file/zagellvku521c4v/app-debug.apk </p>
+
 #Video Aplikasi
 <a href="https://www.youtube.com/watch?v=gF_jcQ9yYsk
 " target="_blank"><img src="https://s17.postimg.org/6w6adxar3/Capture.png" 
