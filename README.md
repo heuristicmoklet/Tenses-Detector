@@ -5,6 +5,11 @@ Dari sisi user, user menginputkan kalimat ke edit text yang telah disediakan. Ke
 
 Aplikasi ini dibuat menggunakan database ActiveAndroid, dimana database tersebut digunakan untuk menyimpan irreguler verb. Untuk mendeteksi tenses, programmer menggunakan pengondisian if/else.<br><br>
 
+#Video Aplikasi
+<a href="https://www.youtube.com/watch?v=gF_jcQ9yYsk
+" target="_blank"><img src="https://s17.postimg.org/6w6adxar3/Capture.png" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 #Identitas Anggota Kelompok 4 :<br>
 1. Nama: Arischa Nur Fadilah<br>
    Kelas: XIRPL1<br>
