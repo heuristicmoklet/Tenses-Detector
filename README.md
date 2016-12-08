@@ -5,6 +5,17 @@ Dari sisi user, user menginputkan kalimat ke edit text yang telah disediakan. Ke
 
 Aplikasi ini dibuat menggunakan database ActiveAndroid, dimana database tersebut digunakan untuk menyimpan irreguler verb. Untuk mendeteksi tenses, programmer menggunakan pengondisian if/else.<br><br>
 
+#Screenshoot Aplikasi
+![Pict1](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-38-30%5B1%5D.png)
+![pict2](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-38-34%5B1%5D.png)
+![pict3](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-39-06%5B1%5D.png)
+![pict4](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-39-11%5B1%5D.png)
+![pict4](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-40-36%5B1%5D.png)
+![pict4](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-40-42%5B1%5D.png)
+![pict4](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-41-17%5B1%5D.png)
+![pict4](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-42-14%5B1%5D.png)
+![pict4](https://github.com/heuristicmoklet/Tenses-Detector/blob/master/Screenshot_2016-12-08-13-42-55%5B1%5D.png)
+
 #Video Aplikasi
 <a href="https://www.youtube.com/watch?v=gF_jcQ9yYsk
 " target="_blank"><img src="https://s17.postimg.org/6w6adxar3/Capture.png" 
